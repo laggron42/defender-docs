@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://twentysix26.github.io/defender-docs/warden/statements/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.2">
     
     
       
@@ -21,11 +21,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.c382b1dc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.5d38496d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -337,6 +338,61 @@
     Conditions
   </a>
   
+    <nav class="md-nav" aria-label="Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-conditions" class="md-nav__link">
+    Message conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-conditions" class="md-nav__link">
+    User conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#channel-conditions" class="md-nav__link">
+    Channel conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-conditions" class="md-nav__link">
+    Server conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles-conditions" class="md-nav__link">
+    Roles conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heat-conditions" class="md-nav__link">
+    Heat conditions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-conditions" class="md-nav__link">
+    Custom conditions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -346,6 +402,41 @@
   
     <nav class="md-nav" aria-label="Actions">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-actions" class="md-nav__link">
+    User actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staff-notifications" class="md-nav__link">
+    Staff notifications
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#server-actions" class="md-nav__link">
+    Server actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heatpoint-actions" class="md-nav__link">
+    Heatpoint actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#various-actions" class="md-nav__link">
+    Various actions
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#variables-related-actions" class="md-nav__link">
@@ -375,6 +466,7 @@
 
 <h1 id="actions-conditions">Actions / Conditions</h1>
 <h2 id="conditions">Conditions</h2>
+<h3 id="message-conditions">Message conditions</h3>
 <ul>
 <li><code>message-matches-any</code><br />
 Is <code>true</code> if any of the patterns that you list are found in the message's content. This kind of searching might be inconvenient in certain use cases: if you prefer to look for whole words instead see the condition <code>message-contains-word</code><br />
@@ -450,6 +542,9 @@ Will check if the message contains more than X emojis. <strong>Important:</stron
 Will check if the message contains more than X characters. Emojis and custom emojis will be considered a single character. Mentions, both users and channels, are counted too.<br />
 <strong>Accepts:</strong> A number representing the number of characters.<br />
 <strong>Context:</strong> <code>message</code>  </li>
+</ul>
+<h3 id="user-conditions">User conditions</h3>
+<ul>
 <li><code>user-id-matches-any</code><br />
 Is <code>true</code> if any of the IDs that you list match the user's ID<br />
 <strong>Accepts:</strong> A list of IDs (numbers)<br />
@@ -502,6 +597,9 @@ Will check if the user has sent less than X messages in the server. <strong>Impo
 Will check if the user is the specified rank. This condition allows for <em>rank-specific</em> Warden rules and grants more granular control compared to the standard <code>rank</code> parameter, which merely indicates the maximum rank a rule will have effect on.<br />
 <strong>Accepts:</strong> A number representing the rank the user must belong to<br />
 <strong>Context:</strong> <code>user</code>  </li>
+</ul>
+<h3 id="channel-conditions">Channel conditions</h3>
+<ul>
 <li><code>channel-matches-any</code><br />
 Will check if the message was sent in any of the specified channels.<br />
 <strong>Accepts:</strong> A list of channel names or IDs<br />
@@ -515,10 +613,16 @@ Will check if the channel in which the message was sent belongs to any of the sp
 Will check if the message was sent in a publicly viewable channel.<br />
 <strong>Accepts:</strong> A bool (true or false)  <br />
 <strong>Context:</strong> <code>message</code>  </li>
+</ul>
+<h3 id="server-conditions">Server conditions</h3>
+<ul>
 <li><code>in-emergency-mode</code><br />
 Will check if the server is in emergency mode, either manual or automatic<br />
 <strong>Accepts:</strong> A bool (true or false)  <br />
 <strong>Context:</strong> Any  </li>
+</ul>
+<h3 id="roles-conditions">Roles conditions</h3>
+<ul>
 <li><code>user-has-any-role-in</code><br />
 Is <code>true</code> if the user belongs to any of these roles in the list<br />
 <strong>Accepts:</strong> A list of role names or IDs<br />
@@ -532,6 +636,9 @@ Will check if the user is a staff member<br />
 Will check if the user is a Defender helper<br />
 <strong>Accepts:</strong> A bool (true or false)  <br />
 <strong>Context:</strong> <code>user</code>  </li>
+</ul>
+<h3 id="heat-conditions">Heat conditions</h3>
+<ul>
 <li><code>user-heat-is</code><br />
 Is <code>true</code> if the user has the specified <a href="#heat-level">heat level</a><br />
 <strong>Accepts:</strong> A number between 0 and 100  <br />
@@ -556,6 +663,9 @@ Is <code>true</code> if the <a href="/defender-docs/warden/overview#custom-heat-
 Is <code>true</code> if the <a href="/defender-docs/warden/overview#custom-heat-level">custom heat</a> exceeds the specified level<br />
 <strong>Accepts:</strong> A list with two elements: the custom heat level name and a number between 0 and 100. Rule name and IDs <a href="/defender-docs/warden/overview#context-variables">context variables</a> are available for the name.<br />
 <strong>Context:</strong> <code>Any</code></li>
+</ul>
+<h3 id="custom-conditions">Custom conditions</h3>
+<ul>
 <li><code>compare</code><br />
 Compares two values. Supports a variety of operators, textual and numeric. The comparison is case sensitive. This is most useful when used in conjunction with context variables. Using numeric operators with non-numeric values will raise an error.<br />
 <em>Supported operators:</em> <code>==</code>, <code>!=</code>, <code>contains</code>, <code>contains-pattern</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;</code>, <code>&gt;</code><br />
@@ -576,6 +686,9 @@ Compares two values. Supports a variety of operators, textual and numeric. The c
 Will send a message to the defined destination. Message editing is also supported. The message may include an embed. Please refer to the <a href="/defender-docs/warden/examples#sending-a-message">examples</a> to understand its use.<br />
 <strong>Accepts:</strong> A map with the destination, the message's content and the embed. Or a list with 2 elements, destination and message content<br />
 <strong>Context:</strong> <code>Any</code>  </li>
+</ul>
+<h3 id="user-actions">User actions</h3>
+<ul>
 <li><code>set-user-nickname</code><br />
 Will change the nickname of a user<br />
 <strong>Accepts:</strong> A string representing the new nickname to set. Supports context variables.<br />
@@ -612,26 +725,6 @@ Will assign to the user the "punish role" that has been set in Defender<br />
 Will assign to the user the "punish role" and deliver the "punish message" that have been set in Defender (see <code>[p]dset general</code>)<br />
 <strong>Accepts:</strong> Nothing<br />
 <strong>Context:</strong> <code>message</code>  </li>
-<li><code>notify-staff</code><br />
-Will send a message to staff's notification channel. The message may include an embed. Please refer to the <a href="/defender-docs/warden/examples#notifying-the-staff">examples</a> to understand its use.  <br />
-<strong>Accepts:</strong> A string representing the message to send. Or a map that describes the embed and all the behaviors of the notification.<br />
-<strong>Context:</strong> Any  </li>
-<li><code>send-mod-log</code><br />
-Will create a new mod-log case of the last expel action issued by the rule<br />
-<strong>Accepts:</strong> A string representing the reason of the expel action. Supports context variables.<br />
-<strong>Context:</strong> Any  </li>
-<li><code>set-channel-slowmode</code><br />
-Will set (or deactivate) slowmode of the channel in the context's message<br />
-<strong>Accepts:</strong> A string representing the slowmode time. Some examples: '5 seconds', '2 minutes', '4 hours'. '0 seconds' will deactivate slowmode. <br />
-<strong>Context:</strong> <code>message</code>  </li>
-<li><code>enable-emergency-mode</code><br />
-Will toggle emergency mode<br />
-<strong>Accepts:</strong> A bool (true or false), representing whether emergency mode should be enabled or disabled<br />
-<strong>Context:</strong> Any  </li>
-<li><code>send-to-monitor</code><br />
-Will send a message to Defender's monitor, <code>[p]defender monitor</code><br />
-<strong>Accepts:</strong> A string representing the message to send. Supports context variables.<br />
-<strong>Context:</strong> Any  </li>
 <li><code>get-user-info</code><br />
 Gets an attribute from an arbitrary user and assigns it to a variable. Many of the <a href="https://discordpy.readthedocs.io/en/latest/api.html#discord.Member">standard discord.py Member attributes</a> are supported.<br />
 Additionally, the attributes<br />
@@ -655,14 +748,35 @@ If the user cannot be found an error will be raised. <br />
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">       </span><span class="nt">staff</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is_staff</span><span class="w"></span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">       </span><span class="nt">helper</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">is_helper</span><span class="w"></span>
 </code></pre></div></li>
-<li><code>no-op</code><br />
-Does nothing. Useful only for testing a rule's conditions with <code>[p]defender warden run</code><br />
-<strong>Accepts:</strong> Nothing<br />
+</ul>
+<h3 id="staff-notifications">Staff notifications</h3>
+<ul>
+<li><code>notify-staff</code><br />
+Will send a message to staff's notification channel. The message may include an embed. Please refer to the <a href="/defender-docs/warden/examples#notifying-the-staff">examples</a> to understand its use.  <br />
+<strong>Accepts:</strong> A string representing the message to send. Or a map that describes the embed and all the behaviors of the notification.<br />
 <strong>Context:</strong> Any  </li>
-<li><code>exit</code><br />
-Interrupts the rule's processing, not carrying on any further action. This is useful when used in conjunction with conditional actions.<br />
-<strong>Accepts:</strong> Nothing<br />
+<li><code>send-mod-log</code><br />
+Will create a new mod-log case of the last expel action issued by the rule<br />
+<strong>Accepts:</strong> A string representing the reason of the expel action. Supports context variables.<br />
 <strong>Context:</strong> Any  </li>
+<li><code>send-to-monitor</code><br />
+Will send a message to Defender's monitor, <code>[p]defender monitor</code><br />
+<strong>Accepts:</strong> A string representing the message to send. Supports context variables.<br />
+<strong>Context:</strong> Any  </li>
+</ul>
+<h3 id="server-actions">Server actions</h3>
+<ul>
+<li><code>set-channel-slowmode</code><br />
+Will set (or deactivate) slowmode of the channel in the context's message<br />
+<strong>Accepts:</strong> A string representing the slowmode time. Some examples: '5 seconds', '2 minutes', '4 hours'. '0 seconds' will deactivate slowmode. <br />
+<strong>Context:</strong> <code>message</code>  </li>
+<li><code>enable-emergency-mode</code><br />
+Will toggle emergency mode<br />
+<strong>Accepts:</strong> A bool (true or false), representing whether emergency mode should be enabled or disabled<br />
+<strong>Context:</strong> Any  </li>
+</ul>
+<h3 id="heatpoint-actions">Heatpoint actions</h3>
+<ul>
 <li><code>add-user-heatpoint</code><br />
 Adds a single heat point with the specified lifetime to the user's <a href="#heat-level">heat level</a><br />
 <strong>Accepts:</strong> A string representing the heat point's lifetime. Some examples: '5 seconds', '2 minutes', '4 hours'<br />
@@ -705,6 +819,17 @@ Sets the channel's <a href="#heat-level">heat level</a> to 0<br />
 Sets the specified <a href="/defender-docs/warden/overview#custom-heat-level">custom heat level</a> to 0<br />
 <strong>Accepts:</strong> A string representing the <a href="/defender-docs/warden/overview#custom-heat-level">custom heat level</a> name. Rule name and IDs <a href="/defender-docs/warden/overview#context-variables">context variables</a> are available for the name.<br />
 <strong>Context:</strong> <code>Any</code>  </li>
+</ul>
+<h3 id="various-actions">Various actions</h3>
+<ul>
+<li><code>no-op</code><br />
+Does nothing. Useful only for testing a rule's conditions with <code>[p]defender warden run</code><br />
+<strong>Accepts:</strong> Nothing<br />
+<strong>Context:</strong> Any  </li>
+<li><code>exit</code><br />
+Interrupts the rule's processing, not carrying on any further action. This is useful when used in conjunction with conditional actions.<br />
+<strong>Accepts:</strong> Nothing<br />
+<strong>Context:</strong> Any  </li>
 <li><code>issue-command</code><br />
 Will issue a bot command as if it was issued by the specified user. The specified user must be the rule's author. If no destination is specified issuing a command in a <code>message</code> context will make it issue in the same channel as the message's; in any other case the command will be issued in Defender's notification channel.<br />
 <strong>Accepts:</strong> A list with two elements: a number representing the ID of the rule's author and a string representing the command to issue. The command must not contain the prefix. <a href="/defender-docs/warden/overview#context-variables">Context variables</a> are supported. The long form of this action also supports a destination.<br />
@@ -838,6 +963,7 @@ Modifies a variable depending on the "operation" that it's being requested. Supp
 
               
             </article>
+            
           </div>
         </div>
         
@@ -882,10 +1008,10 @@ Modifies a variable depending on the "operation" that it's being requested. Supp
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.a6c66575.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7f366e99.min.js"></script>
       
     
   </body>
